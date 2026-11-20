@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8f3">
+  <title></title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/live-photo.js" defer></script>
+  <script src="/photo-dates.js" defer></script>
+  <script src="/viewer-gestures.js" defer></script>
+  <script src="/image-loader.js" defer></script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="主页"><span class="brand-icon" aria-hidden="true">◒</span></a>
+    <div class="top-actions"><span class="public-badge"><i></i> 公开影像空间</span><button id="login-open" class="button small">管理空间 ↗</button><button id="logout" class="button small hidden">退出管理</button></div>
+  </header>
+  <main>
+    <section id="upload-panel" class="upload-panel hidden" aria-label="上传文件">
+      <div class="upload-heading"><div><h2>分享新的片刻</h2><p>照片、Live 图、视频，同一个入口自动识别。单个文件最大 2 GB。</p><p class="live-import-tip">iPhone 相册选择器可能只提供照片、不提供实况视频。请上传保留照片＋MOV 的原片；支持分批补传，并按实况标识或同名自动配对。</p></div><button id="choose" class="button primary">＋ 选择文件</button></div>
+      <input id="files" type="file" accept=".jpg,.jpeg,.heic,.heif,.png,.gif,.webp,.avif,.mp4,.webm,.mov,.m4v" multiple hidden>
+      <div id="queue" class="queue" aria-live="polite"></div>
+    </section>
+    <section class="collection">
+      <div class="collection-head"><div class="tabs" role="group" aria-label="筛选类型"><button class="tab active" data-filter="all">所有片刻 <span id="count">0</span></button><button class="tab" data-filter="image">照片</button><button class="tab" data-filter="live">Live</button><button class="tab" data-filter="video">视频</button></div><span class="sort-label">按拍摄时间 ↓</span></div>
+      <div id="gallery" class="gallery"></div>
+      <div id="empty" class="empty hidden"><div class="empty-art"><span>◒</span><i>✦</i></div><h2>故事，从一个片刻开始</h2><p id="empty-text">这里即将装满值得分享的照片和视频。</p><button id="empty-upload" class="button primary hidden">上传第一个片刻 ↗</button></div>
+      <div id="loading" class="loading">正在打开影像空间…</div>
+    </section>
+  </main>
+  <footer><span>◒ 片刻 · 留住生活的温度</span><span>MADE FOR YOUR EVERYDAY MOMENTS</span></footer>
+  <dialog id="login-dialog"><form id="login-form"><div class="dialog-head"><h2>管理你的空间</h2><button type="button" class="icon-button" id="login-close" aria-label="关闭">×</button></div><p>输入管理员密码，即可上传与管理影像。</p><label for="password">管理员密码</label><input id="password" type="password" autocomplete="current-password" required maxlength="256"><p id="login-error" class="error" role="alert"></p><button class="button primary full" id="login-submit" type="submit">进入管理空间 ↗</button></form></dialog>
+  <dialog id="preview-dialog" class="preview" aria-label="照片浏览">
+    <div id="preview-content" aria-label="照片，左右滑动可切换"></div>
+    <div class="preview-top"><span id="preview-date"></span><span id="preview-counter" aria-live="polite"></span><button id="preview-close" class="viewer-icon" aria-label="关闭预览">×</button></div>
+    <button id="preview-prev" class="viewer-icon viewer-prev" aria-label="上一张">‹</button>
+    <button id="preview-next" class="viewer-icon viewer-next" aria-label="下一张">›</button>
+    <span id="preview-status" class="viewer-status hidden" role="status"></span>
+    <div class="viewer-bottom">
+      <span id="preview-hint" class="viewer-hint">左右滑动切换 · 点击留白关闭</span>
+      <div class="viewer-tools">
+        <details id="preview-more" class="viewer-more"><summary class="viewer-action" aria-label="更多选项">更多 ⋯</summary><div class="viewer-menu"><p id="preview-note"></p><a id="download" download>下载原文件 ↓</a><a id="download-motion" class="hidden" download>下载动态视频 ↓</a><div id="download-originals"></div></div></details>
+      </div>
+    </div>
+  </dialog>
+  <div id="toast" class="toast hidden" role="status"></div>
+</body>
+</html>

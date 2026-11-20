@@ -1,0 +1,28 @@
+# Local media, credentials, caches and generated public URLs.
+/outputs/media-site/data/
+/outputs/media-site/登录信息.txt
+/outputs/media-site/公网地址.txt
+/outputs/media-site/*.jpg
+
+# Bundled runtimes, downloaded dependencies and desktop build output.
+/outputs/media-site/tools/
+/outputs/media-desktop/片刻导入助手/
+/work/
+/文件校验-SHA256.json
+
+# Local development files and archives.
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+node_modules/
+.env
+.env.*
+!.env.example
+*.log
+*.pid
+*.zip
+*.7z
+*.bundle
+.DS_Store
+Thumbs.db
